@@ -1,0 +1,104 @@
+#include <stdio.h>
+
+int exercicio1(int n)
+{
+    int aux=1;
+    
+    if(n>=10) 
+    return -1;
+    else
+    {
+        if(n>0)
+        {   
+            n=n/10;
+            aux = aux + exercicio1(n);
+            
+            return aux;
+        }
+        
+
+    }
+
+}
+int exercicio2(int n)
+{
+    int soma=0;
+    if(n<0)
+    {
+        return -1;
+    }
+    else
+    {
+        soma= n+exercicio2(n-1);
+        return soma;
+    }
+}
+int exercicio3(int numerador, int denominador)
+{
+    int divisao = 0;
+    if (numerador <= 0)
+    {
+        return 0;
+    }
+    else
+    {
+        divisao=1+exercicio3(numerador - denominador, denominador);
+        return divisao;
+    }
+}
+double exercicio4(int n,int i)
+{
+    double  soma= 0;
+    if(n<=0)
+        return 0;
+    else
+    {   
+        if(i<=n)
+        {   
+            soma=1.0/i;
+            soma+=exercicio4(n, i+1);
+            return soma;
+        }
+        return 0;
+    }
+}
+
+
+int main()
+{
+    int exercicio=0,numero,aux;
+    
+    printf("Digite o N do exercicio: ");
+    scanf("%d",&exercicio);
+    
+    if(exercicio==1)
+    {   
+        
+        printf("Digite um numero: ");
+        scanf("%d",&numero);
+        aux = exercicio1(numero);
+        printf("%d",aux);
+    }
+    else if(exercicio== 2)
+    {
+        printf("Digite um numero: ");
+        scanf("%d",&numero);
+        aux = exercicio2(numero);
+        printf("%d",aux);
+    }
+    else if(exercicio== 3)
+    {
+        int numerador=0, denominador=0,cont=0;
+        printf("Digite o numerador e o denominador com espaco: ");
+        scanf("%d %d",&numerador,&denominador);
+        aux = exercicio3(numerador,denominador);
+        printf("%d",aux);
+    }
+    else if(exercicio== 4)
+    {
+        printf("Digite um numero: ");
+        scanf("%d",&numero);
+        double aux = exercicio4(numero,1);
+        printf("soma harmonica eh %f",aux);
+    }
+}
